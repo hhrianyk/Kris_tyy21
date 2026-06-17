@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <link rel="icon" type="image/x-icon" href="static/images/icon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>🌸 З Днем Народження, Крістино!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="app">
+        <div class="flowers-bg"></div>
+
+        <!-- 🎀 Екран 1: Інтрига -->
+        <div id="screen1" class="screen active">
+            <div class="screen-content">
+                <div class="title-container">
+                    <h1 class="main-title">🌸 З Днем Народження,</h1>
+                    <h1 class="main-title name-title">Крістино!</h1>
+                </div>
+                <div class="typing-container">
+                    <p id="typing-text"></p>
+                    <span class="cursor">|</span>
+                </div>
+                <div class="divider">
+                    <span class="divider-icon">💝</span>
+                    <span class="divider-line"></span>
+                    <span class="divider-icon">🌸</span>
+                    <span class="divider-line"></span>
+                    <span class="divider-icon">💝</span>
+                </div>
+                <button class="gentle-btn" id="startBtn">
+                    <span>Почати святкування</span>
+                    <span class="btn-icon">🎀</span>
+                </button>
+            </div>
+            <div class="petals"></div>
+        </div>
+
+        <!-- 🎂 Екран 2: Торт зі свічками -->
+        <div id="screen2" class="screen">
+            <div class="screen-content">
+                <h2 class="section-title">🎂 Засвіти свічки!</h2>
+                <p class="subtitle">Натискай на свічку, щоб поставити її на торт</p>
+
+                <div class="cake-game-container">
+                    <div class="cake-wrapper">
+                        <div class="cake-base">
+                            <div class="cake-body">
+                                <div class="candles-container" id="candlesContainer"></div>
+                                <div class="cake-layer layer1"></div>
+                                <div class="cake-layer layer2"></div>
+                                <div class="cake-layer layer3"></div>
+                                <div class="cake-decor">
+                                    <span class="decor-dot">🌸</span>
+                                    <span class="decor-dot">💝</span>
+                                    <span class="decor-dot">🌸</span>
+                                    <span class="decor-dot">💝</span>
+                                    <span class="decor-dot">🌸</span>
+                                </div>
+                            </div>
+                            <div class="cake-plate"></div>
+                        </div>
+
+                        <div class="candle-counter">
+                            <span>💕</span>
+                            <span id="candleCount">0</span>
+                            <span>з 21</span>
+                            <span>💕</span>
+                        </div>
+                        <div class="candle-progress">
+                            <div class="candle-progress-fill" id="candleProgressFill"></div>
+                        </div>
+                    </div>
+
+                    <div class="candles-pool" id="candlesPool"></div>
+                </div>
+
+                <button class="gentle-btn next-btn" id="nextBtn1" style="display: none;">
+                    <span>🎉 Відкрити сюрприз!</span>
+                    <span class="btn-icon">🎁</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 💝 Екран 3: Фото -->
+        <div id="screen3" class="screen">
+            <div class="screen-content">
+                <h2 class="section-title">💝 Твої моменти</h2>
+                <div class="photos-grid" id="photosGrid"></div>
+                <button class="gentle-btn next-btn" id="nextBtn2">
+                    <span>Читати привітання</span>
+                    <span class="btn-icon">💕</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 💌 Екран 4: Привітання -->
+        <div id="screen4" class="screen">
+            <div class="screen-content">
+                <h2 class="section-title">💌 Тонна привітань</h2>
+                <div class="wishes-waterfall" id="wishesWaterfall"></div>
+                <button class="gentle-btn next-btn" id="nextBtn3">
+                    <span>🎆 Фінал!</span>
+                    <span class="btn-icon">✨</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 🎆 Екран 5: ФІНАЛЬНИЙ -->
+        <div id="screen5" class="screen">
+            <div class="screen-content">
+                <h2 class="section-title">🎆 З Днем Народження, Крістино!</h2>
+                <div class="final-container" id="finalContainer"></div>
+                <button class="gentle-btn finish-btn" id="finishBtn">
+                    <span>🌸 Почати знову</span>
+                </button>
+            </div>
+        </div>
+
+        <audio id="bg-music" loop preload="auto" style="display: none;">
+            <source src="{{ url_for('static', filename='audio/Happy.mp3') }}" type="audio/mpeg">
+        </audio>
+
+        <div class="music-toggle" id="music-toggle">🎵</div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
